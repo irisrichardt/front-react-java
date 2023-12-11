@@ -1,32 +1,31 @@
-function Tabela({elementos, selecionar}) {
+function Tabela({ elementos, titulo, colunas }) {
   return (
-    <div className="container border rounded shadow-sm">
-    <table className='table table-hover text-center text-secondary'>
-      <thead>
-        <tr>
-          <th scope="col">Indice</th>
-          <th scope="col">Código</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Marca</th>
-          <th scope="col">Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          elementos.map((obj, indice) => (
+    <>
+    {titulo && <h2 className="text-secondary mb-3">{titulo}</h2>}
+    <div className="container border rounded shadow-sm collapse1">
+      <table className='table table-hover text-secondary'>
+        <thead>
+          <tr>
+            <th scope="col">Índice</th>
+            {colunas.map((coluna, index) => (
+              <th key={index} scope="col" className={`th-ws ${coluna.classes || ''}`}>{coluna.nome}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {elementos.map((obj, indice) => (
             <tr key={indice}>
-              <th scope="col">{indice+1}</th>
-              <td>{obj.codigo}</td>
-              <td>{obj.nome}</td>
-              <td>{obj.marca}</td>
-              <td><button onClick={() => {selecionar(indice)}} className='btn btn-success'>Selecionar</button></td>
+               <th scope="col" className="align-middle text-center">{indice + 1}</th>
+              {colunas.map((coluna, colIndex) => (
+                <td key={colIndex} className={`align-middle ${coluna.classes || ''}`}>{obj[coluna.propriedade]}</td>
+              ))}
             </tr>
-          ))
-        }
-      </tbody>
-    </table>
+          ))}
+        </tbody>
+      </table>
     </div>
-  )
+    </>
+  );
 }
 
 export default Tabela;

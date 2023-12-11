@@ -12,3 +12,27 @@ form input[type='button'] {
   margin-right: 10px;
   margin-top: 10px;
 }
+
+.collapse1 {
+  overflow-y: scroll;
+  height: 500px;
+}
+
+.th-ws {
+  white-space: nowrap;
+}
+
+.ml-50 {
+  margin-left: 50px;
+}
+
+.mr-6 {
+  margin-right: 6px;
+}
+
+.hr {
+  width: 95%;
+  margin: 0 auto;
+  border: 2px solid #060606; /* Cor da borda */
+  border-radius: 5px; /* Borda arredondada */
+}
